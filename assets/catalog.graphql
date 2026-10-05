@@ -1,0 +1,58 @@
+query Catalog {
+  species: pokemonspecies(order_by: {id: asc}) {
+    id
+    name
+    generation_id
+    is_legendary
+    is_mythical
+    names: pokemonspeciesnames(where: {language_id: {_eq: 9}}) { name genus }
+    pokemons(where: {is_default: {_eq: true}}) {
+      id
+      types: pokemontypes(order_by: {slot: asc}) { type { name } }
+      stats: pokemonstats(order_by: {stat_id: asc}) { base_stat }
+    }
+  }
+  moves: move(order_by: {id: asc}, where: {type_id: {_lt: 19}}) {
+    id
+    name
+    power
+    accuracy
+    pp
+    priority
+    move_effect_chance
+    generation_id
+    type { name }
+    damageclass: movedamageclass { name }
+    names: movenames(where: {language_id: {_eq: 9}}) { name }
+    effect: moveeffect { texts: moveeffecteffecttexts(where: {language_id: {_eq: 9}}) { short_effect } }
+  }
+  types: type(where: {id: {_lt: 19}}, order_by: {id: asc}) {
+    id
+    name
+    generation_id
+    names: typenames(where: {language_id: {_eq: 9}}) { name }
+  }
+  efficacy: typeefficacy(where: {damage_type_id: {_lt: 19}, target_type_id: {_lt: 19}}) {
+    damage_type_id
+    target_type_id
+    damage_factor
+  }
+  abilities: ability(where: {is_main_series: {_eq: true}}, order_by: {name: asc}) {
+    id
+    name
+    generation_id
+    names: abilitynames(where: {language_id: {_eq: 9}}) { name }
+    texts: abilityeffecttexts(where: {language_id: {_eq: 9}}) { short_effect }
+  }
+  versiongroups: versiongroup(order_by: {order: asc}) {
+    name
+    order
+    generation_id
+    versions { name names: versionnames(where: {language_id: {_eq: 9}}) { name } }
+    regions: versiongroupregions { region { name } }
+  }
+  generations: generation(order_by: {id: asc}) {
+    id
+    region { name }
+  }
+}
