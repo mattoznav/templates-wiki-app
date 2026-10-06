@@ -92,3 +92,7 @@ test/core_test.dart      parsing, learnsets, evolution text, labels
 Data from [PokéAPI](https://pokeapi.co/). Artwork and sprites are loaded at runtime from [PokeAPI/sprites](https://github.com/PokeAPI/sprites) and are not included in this repository. Fonts (Fraunces, IBM Plex Sans, IBM Plex Mono, SIL Open Font License) are loaded with `google_fonts`.
 
 Pokémon and Pokémon character names are trademarks of Nintendo, Creatures Inc. and GAME FREAK inc. This template is an unofficial fan reference and is not affiliated with or endorsed by them.
+
+## License
+
+The code is released under the [MIT License](LICENSE). It covers the code only: data from PokéAPI, the artwork loaded from its repositories and the Pokémon trademarks are not covered.
